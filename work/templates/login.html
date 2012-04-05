@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{% from "form_macro.html" import render_errors %}
+{% block titlePre %}
+    login
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+		<div class="row">
+            
+		    <form class="form-horizontal" id="loginform" action="{{ url_for('user.login_post') }}" method="post">
+                {{ form.hidden_tag() }}
+
+		        <div class="control-group">
+		            <label class="control-label" for="username">
+                        {{ form.username.label }}
+                     </label>
+		            <div class="controls"> 
+                        {{ form.username(size=30, class="input-xlarge") }} {{ render_errors(form.username) }}
+		            </div>
+		        </div>
+		       
+		        <div class="control-group"> 
+		            <label class="control-label" for="password">
+                        {{ form.password.label }}
+                    </label>
+
+		            <div class="controls"> 
+                        {{ form.password(class="input-xlarge", placeholder="Password") }} {{ render_errors(form.username) }}
+
+		            </div>
+		        </div>
+
+		        <div class="control-group"> 
+		            <label class="control-label" for="remember">
+                        {{ form.remember.label }}
+                    </label>
+
+		            <div class="controls" >    
+                        {{ form.remember }}  
+		            </div>
+		        </div>
+		        
+		        <div class="control-group">
+		             <div class="controls">  {{ form.submit }}</div>
+		        </div>
+		    </form>
+		</div>
+{% endblock %}
+
+
+
+{% block footer %}
+    {{ super() }}
+    <script src="{{ url_for('static', filename='js/login.js') }}" > </script>
+{% endblock %}

@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{% import "form.html" as forms with context %}
+{% block titlePre %} base {% endblock %}
+
+{% block meta %}
+    {{ super() }}
+{% endblock %}
+
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block script %}
+        // wait for the DOM to be loaded
+        $(document).ready(function() {
+            if ($("#2").length > 0) {
+                addDivHTML = $("#2")[0].innerHTML;
+            }
+            if  ($("#3").length > 0) {
+                updateDivHTML = $("#3")[0].innerHTML;
+            }
+        });
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+{% endblock %}
+
+{% block content %}
+       <ul>
+            {% for category, msg in get_flashed_messages(with_categories=true) %}
+                <li class='alert alert-{{ category }}'> {{ msg }}</li>
+            {% endfor %}
+       </ul>
+    <input id="checkType" type="hidden" value="{{ checkType }}"/>
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#1" data-toggle="tab">查看</a></li>
+            {% if addURL is defined %}
+                <li><a href="#2" data-toggle="tab" id="addTab">添加</a></li>
+            {% endif %}
+            {% if updateURL is defined %}
+                <li><a href="#3" data-toggle="tab" id="updateTab">更新</a></li>
+            {% endif %}
+         </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane active" id="1">
+                <table class="table table-bordered table-striped" style="text-align:center" id="myTable">
+                    <thead>
+                        <tr>
+                            {% for attr in addForm.showAttributes %}
+                                <th> {{ addForm[attr].label|striptags }}</th>
+                            {% endfor %}
+                       </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                            <tr>
+                                {% for tInfo in addForm.showAttributes %}
+                                    {% if tInfo == "email" %}
+                                        <td> <a href="mailto:{{ d[tInfo] }}"> {{ d[tInfo] }}</a></td>
+                                    {% elif tInfo =="stuff" and checkType == "base" %}
+                                        <td> <a href="{{ url_for('base.get_entities', base=d['name'], entity='stuff') }}"> 查看员工 </a></td>
+                                    {% else %}
+                                        <td> {{ d[tInfo] }} </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if addURL is defined %}
+                <div class="tab-pane" id="2">
+                    {{ forms.myForm(addForm, addURL) }}
+                </div>
+            {% endif %}
+
+            <div class="tab-pane" id="3">
+                <div class="control-group">
+                    <label class="control-label">基地编号</label>
+                    <div class="controls">
+                      <span class="input-xlarge uneditable-input">{{ session["base"] }}</span>
+                    </div>
+                </div>
+                {{ forms.myForm(updateForm, updateURL) }}
+            </div>
+        </div><!--tab-content -->
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <script src="{{ url_for('static', filename='js/base.js') }}"> </script>
+    {{ super() }}
+{% endblock %}

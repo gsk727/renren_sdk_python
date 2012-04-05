@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+{% block head %}
+   {{ super() }}
+{% endblock %}
+
+
+{% block content %}
+    <ul class="thumbnails">
+        <li class="span3">
+          <a class="thumbnail" href="{{ url_for('base.get',  base='base1') }}">
+            <img alt="基地1" src="url_for('static', filename='img/base1.png') ">
+          </a>
+        </li>
+        <li class="span3">
+          <a class="thumbnail" href="#">
+            <img alt="基地2" src="http://placehold.it/260x180">
+          </a>
+        </li>
+        <li class="span3">
+          <a class="thumbnail" href="#">
+            <img alt="基地3" src="http://placehold.it/260x180">
+          </a>
+        </li>
+        <li class="span3">
+          <a class="thumbnail" href="#">
+            <img alt="" src="http://placehold.it/260x180">
+          </a>
+        </li>
+      </ul>
+{% endblock %}
+
+{% block footer %}
+  {{ super() }}
+{% endblock %}

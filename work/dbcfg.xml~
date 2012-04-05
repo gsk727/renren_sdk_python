@@ -1,0 +1,12 @@
+<root>
+    <connection>
+        <dbname> app   </dbname>
+        <dbname> device </dbname>
+        <host> 127.0.0.1 </host>
+        <collection> user </collection>
+        <collection> devices </collection>
+        <collection> air </collection>
+        <collection> base </collection>        
+        <port> 27017 </port>
+    </connection>
+</root>

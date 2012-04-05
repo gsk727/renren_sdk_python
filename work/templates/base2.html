@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+
+{{ super() }}
+
+<div class="container">
+
+    <h1>"{{ test[name] }}"</h1>
+    <div class="page-header" style="text-align:center">
+        <h1>基地</h1>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+          <tr>
+            <th>名称</th>
+            <th>描述</th>
+            <th>员工</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for d in data %}
+          <tr>
+            <td> {{ d.name }} </td>
+            <td>{{ d.des }}</td>
+            <td> <a href="{{ url_for('base.get_stuff', sName=d.name) }}"> 查看员工 </a> </td>
+            
+          </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+          <div id="accordion2" class="accordion" style="">
+            <div class="accordion-group">
+            <!--
+                <div class="accordion-heading">
+                </div> 
+            --> 
+                <div class="accordion-body in collapse" id="#13213" style="height: auto;">
+                    <div class="accordion-inner">
+                    </div>
+                </div> 
+            </div>
+           </div>
+    <a href="#13213" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+        13213
+    </a>
+{% endblock %}
+
+{% block footer %}
+    <script src="../static/js/login.js"> </script>
+    {{ super() }}
+{% endblock %}
+

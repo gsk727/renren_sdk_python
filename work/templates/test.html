@@ -1,0 +1,28 @@
+<head>
+	    <script src="{{ url_for('static', filename='js/jquery-1.7.1.min.js') }}"> </script>
+                
+	    <script src="{{ url_for('static', filename='js/jquery.validate.js') }}"> </script>
+    
+        <script>
+            $(document).ready(function(){
+                $("#frm").validate();
+            });
+        </script>
+</head>
+
+<body>
+    <div id="test1">asdasdasdsaashjkashdjkshafdkjshfkjfhlasjkfhsdakjflha
+        <h1>asdsadasdasd as</h1>
+     </div>
+    <div id="test2"> 
+        <p> test2  </p>
+    </div>
+    <form id="frm" action="#" method="get">
+        <label for="cemail"> E-mail </lable>
+        <input class="required email" id="cemail" />
+        <input class="submit" type="submit" value="Submit"/>
+    </form>
+    <input id="pBtn" value="pop"  type="button" />
+</body>
+
+<script src="{{ url_for("static", filename="js/test.js") }}"></script>

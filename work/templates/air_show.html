@@ -1,0 +1,61 @@
+{% extends "layout.html" %}
+
+{% block head %}
+    <link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link type="text/css" href="../static/css/device.css" rel="stylesheet">
+    <link type="text/css" href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../static/css/docs.css" rel="stylesheet">
+    <link href="../static/js/google-code-prettify/prettify.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+    <div id="accordion2" class="accordion">
+        {% for info in airInfo %}
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a href="#{{ info.a }}" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle">
+                    {{ info.a }}
+                    </a>
+                </div>
+
+                <div class="accordion-body in collapse" id="{{ info.a }}" style="height: auto;">
+                    <div class="accordion-inner">
+                        <div class="row">
+                            <div class="span4"> {{ info.a }} </div>
+                            <div class="span8"> 
+                            {% for d in info.devList %}
+                                <ul>
+                                    <li> 
+                                        <a href="{{ url_for('device.device_get', devID = d ) }}" > aaa </a> 
+                                    <li>
+                                </ul> 
+                            {% endfor %}
+                            </div> 
+                        </div> 
+                    </div>
+              </div>
+        {% endfor %}
+    </div>
+
+
+{% endblock %}
+
+
+
+{% block footer %}
+    <script src="../static/js/jquery.js"> </script>
+    <script src="../static/js/login.js"> </script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script src="../static/js/air.js"> </script>
+{% endblock %}

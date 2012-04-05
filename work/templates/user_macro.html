@@ -1,0 +1,15 @@
+
+<!-- 显示自己的用户信息 -->
+{% macro user_self_show(userInfo)  -%}
+<div class="row">
+    <div class="span4"> 
+        名字: <input class="span4" id="username", type="text" value="{{  userInfo.name  }}">
+     </div>
+     <div class="span4">
+         email : {{ userInfo.email }}
+     </div>
+     <div class="span4"> 
+         <a href="/user/editpassword"> 更改密码 </a>
+    </div>
+</div>
+{%- endmacro %}

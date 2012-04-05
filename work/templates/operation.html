@@ -1,0 +1,53 @@
+{% import "form.html" as forms with context %}
+
+<input type="hidden" value= "{{ checkType }}" id="checkType" />
+<div class="container">
+    <div class="tabbable">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#1" data-toggle="tab">查看</a></li>
+            {% if addURL %}
+                <li><a href="#2" data-toggle="tab" id="addTab">添加</a></li>
+            {% endif %}
+            <li><a href="#3" data-toggle="tab" id="updateTab">更新</a></li>
+        </ul>
+
+	    <div class="tab-content">
+            <div class="tab-pane active" id="1">
+                <table class="table table-bordered table-striped" style="text-aligin:center" id="myTable">
+                    <thead>
+                        <tr>
+                            {% for tInfo in tableMap %}
+                                <th>{{ tInfo.1 }}</th>
+                            {% endfor %}
+                       </tr>
+                    </thead>
+                    <tbody>
+                        {% for d in data %}
+                            <tr>
+                                {% for tInfo in tableMap %}
+                                    {% if tInfo.0 == "email" %}
+                                        <td> <a href="mailto:{{ d[tInfo.0] }}"> {{ d[tInfo.0] }}</a></td>
+                                    {% elif tInfo.0 =="stuff" and checkType == "base"  %}
+                                        <td> <a href="{{ url_for('base.get_entities', base=d['name'], entity='stuff') }}"> 查看员工 </a></td>
+                                    {% else %}
+                                        <td> {{ d[tInfo.0] }} </td>
+                                    {% endif %}
+                                {% endfor %}
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+
+            {% if addURL %}
+                <div class="tab-pane" id="2">
+                    {{ forms.myForm("frmAdd", addURL, "addBtnOK", "确定添加") }}
+                </div>
+            {% endif %}
+
+            <div class="tab-pane" id="3">
+                {{ forms.myForm("frmUpdate", updateURL, "updateBtnOK", "确定更新") }}
+            </div>
+        </div><!--tab-content -->
+    </div>
+</div>

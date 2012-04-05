@@ -1,0 +1,37 @@
+<!--  form 的宏， copy别人的 -->
+{% macro render_errors(field) %}
+{% if field.errors %}
+<ul class="errors">
+    {% for error in field.errors %}
+        <li class="alert alert-error">{{ error }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endmacro %}
+
+
+{% macro myForm(id="", url="", btnID="", btnName="") -%}
+    <form action="{{ url_for(url) }}"  method="post" id="{{ id }}">
+        {% for tInfo in tableMap %}
+            {% if tInfo.0 == "base" %}
+                <label> 基地 </label>
+                <div class="controls">
+                    <select id="{{ tInfo.0 }}" name="{{ tInfo.0 }}">
+                    </select>
+                </div>
+            {% elif tInfo.0 == "airline" %}
+               <label> 航班 </label>
+                <div class="controls">
+                    <select id="{{ tInfo.0 }}" name="{{ tInfo.0 }}">
+                    </select>
+                </div>
+            {% else %}
+                <label> {{ tInfo.1 }} </label>
+                {{ input(name = tInfo.0, id=tInfo.0) }}
+            {% endif %}
+        {% endfor %}
+           <div class="form-action">
+              {{ button(btnID, btnName) }}
+           </div>
+    </form>
+{%- endmacro %}

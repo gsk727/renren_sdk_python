@@ -1,0 +1,26 @@
+{% from 'form_macro.html' import render_errors %}
+
+{% macro input(name, id, class="span4", value="", type="text") -%}
+    <input id= "{{ id }}" class="{{ class }}" type="{{ type }}" value="{{ value|e }}" name="{{ name }}">
+{%- endmacro %}
+
+{% macro button(id, value="", class="btn btn-primary", type="button") -%}
+     <button class="{{ class }}" type="{{ type }}" id="{{ id }}">{{ value }}</button>
+{%- endmacro %}
+
+{% macro myForm(form, url)  -%}
+	<form action="{{ url }}" method="POST" id="{{ form.myID }}">
+	    {{ form.hidden_tag() }}
+        {% for tInfo in form.showAttributes %}
+            {% if tInfo != "noneInput" %}
+                {{ form[tInfo].label }}
+            {% endif %}
+            {{ form[tInfo](class="span4") }} {{ render_errors(form[tInfo]) }}
+        {% endfor %}
+
+        <div class="form-action">
+            {{ form.submit() }}
+        </div>
+    </form>
+
+{%- endmacro %}

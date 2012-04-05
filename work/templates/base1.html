@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+{% block head %}
+    <link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet">
+    <link type="text/css" href="../static/css/device.css" rel="stylesheet">
+    <link type="text/css" href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../static/css/docs.css" rel="stylesheet">
+    <link href="../static/js/google-code-prettify/prettify.css" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div> </div>
+    {% for d in data %}    
+    <div class="row show-grid">
+        <div class="span4">
+           {{ d.name }} 
+        </div>
+        <div class="span4 offset-1">
+            {{ d.des }}
+        </div>
+        <div class="span4">
+            <a href="#"> 查看员工 </a> 
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block footer %}
+    <script src="../static/js/jquery.js"> </script>
+    <script src="../static/js/login.js"> </script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script src="../static/js/air.js"> </script>
+{% endblock %}
+

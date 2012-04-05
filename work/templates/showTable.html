@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% block meta %}
+{{ super() }}
+{% endblock %}
+
+{% block script %}
+        $(function() {
+            $("#frmUpdate #begin").datepicker();
+            $("#frmAdd #begin").datepicker();
+        });
+
+        $(function() {
+            $("#frmUpdate #end").datepicker();
+            $("#frmAdd #end").datepicker();
+        });
+{% endblock %}
+    
+{% block head %}
+    {{ super() }}
+{% endblock %}
+
+{% block body %}
+    {{ super() }}
+    {% include "operation.html" %}
+{% endblock %}
+
+{% block footer %}
+   {{ super() }}
+   <script src="{{ url_for('static', filename='js/base.js') }}" ></script>
+{% endblock %}

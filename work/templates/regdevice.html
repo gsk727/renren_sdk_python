@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block head %} 
+    <link href="../static/css/bootstrap.css" type="text/css" rel="stylesheet"> <link type="text/css" href="../static/css/device.css" rel="stylesheet"> <link type="text/css" href="../static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="../static/css/docs.css" rel="stylesheet">
+    <link href="../static/js/google-code-prettify/prettify.css" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+<div class="row">
+    <div class="span4">
+    <form class="form-horizontal">
+        <fieldset>
+        <div class="control-group">
+            <label class="control-label" for="input01"> asds </label>
+            <div class="controls"> 
+                <input id="input01" class="input-xlarge" type="text">
+            </div>
+        </div>
+    </form>
+    </div>
+</div>
+
+<div style="width:958px; margin:0pt, auto; text-align:left;">
+    <div id="device">
+
+        
+        <div id="locale" class="row" >
+            <div class = "span4"> <label> 基地</label> </div>
+            <div style="span8"> <input type="text" id="localInfo"/> </div>
+            <div  class="span12" style="display:block"> asdasdd </div>
+        </div>
+
+
+      <div id="" class="device-div">
+            <label class="device-label"> 设备编号 </label>
+            <div style="position:relative; margin-left:10px; top:5px"> <input type="text" id="IDInfo"/> </div>
+      </div>
+
+      <div id="" class="device-div">
+            <label class="device-label"> 设备描述 </label>
+            <div style="position:relative; margin-left:10px; top:5px"> <input type="text" id="desInfo"/> </div>
+      </div>
+
+      <div id="" class="device-div">
+            <label class="device-label"> 设备所属航班</label>
+            <div style="position:relative; margin-left:10px; top:5px"> <input type="text" id="flightInfo"/> </div>
+      </div>
+
+
+    <div style="padding-left:340px; position:relative">
+        <input type="button" class="btn" value="确定" id="okBtn"/>
+    </div>
+</div>
+{% endblock %}
+
+{% block footer %} 
+    <script src="../static/js/jquery.js"></script>
+    <script src="../static/js/bootstrap-transition.js"></script>
+    <script src="../static/js/bootstrap-alert.js"></script>
+    <script src="../static/js/bootstrap-modal.js"></script>
+    <script src="../static/js/bootstrap-dropdown.js"></script>
+    <script src="../static/js/bootstrap-scrollspy.js"></script>
+    <script src="../static/js/bootstrap-tab.js"></script>
+    <script src="../static/js/bootstrap-tooltip.js"></script>
+    <script src="../static/js/bootstrap-popover.js"></script>
+    <script src="../static/js/bootstrap-button.js"></script>
+    <script src="../static/js/bootstrap-collapse.js"></script>
+    <script src="../static/js/bootstrap-carousel.js"></script>
+    <script src="../static/js/bootstrap-typeahead.js"></script>
+    <script src="../static/js/device.js"></script>
+{% endblock %}

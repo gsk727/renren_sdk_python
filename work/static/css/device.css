@@ -1,0 +1,18 @@
+.device-div{
+    padding-left:340px;
+    position:relative;
+    padding-bottom:10px;
+    text-align:left;
+}
+
+.device-label{
+    display:block;
+    width:335px;
+    top:9px;
+    position:absolute;
+    left:0pt;
+    text-align:right;
+
+
+}
+

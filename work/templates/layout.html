@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% block meta %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+{% endblock %}
+
+<head>
+    <title> {% block titlePre %} {% endblock %}-Happy </title>
+    {% block head %}
+        <link href="{{ url_for('static', filename='css/bootstrap.css') }}" type="text/css" rel="stylesheet">
+        <link type="text/css" href="{{ url_for('static', filename='css/device.css') }}" rel="stylesheet"> 
+        <link type="text/css" href="{{ url_for('static', filename='css/bootstrap-responsive.css') }}" rel="stylesheet">
+        <link type="text/css" href="{{ url_for('static', filename='css/docs.css') }}" rel="stylesheet">
+        <link href= "{{ url_for('static', filename='js/google-code-prettify/prettify.css') }}" rel="stylesheet">
+        <link href="{{ url_for('static', filename='css/jquery-ui-1.8.18.custom.css') }}" rel="stylesheet">
+        <script src="{{ url_for('static', filename='js/jquery-1.7.1.min.js') }}"> </script>
+        <script src="{{ url_for('static', filename='js/jquery.form.js') }}"></script> 
+        <script src="{{ url_for('static', filename='js/jquery-ui-1.8.18.custom.min.js') }}"> </script>
+        <script src="{{ url_for('static', filename='js/jquery.ui.core.js') }}"> </script> 
+        <script src="{{ url_for('static', filename='js/jquery.ui.datepicker.js') }}"> </script>
+        <style type="text/css">
+            body {
+                padding-top: 60px;
+                padding-bottom: 40px;
+            }
+        </style>
+
+        <script type="text/javascript">
+            {% block script %}
+            {% endblock %}
+        </script>
+    {% endblock %}
+</head>
+
+
+<body>
+    {% block body %}
+        <div class="navbar navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    <a class="brand" href="{{ url_for('copyright') }}" style="color:#32ff00">后勤管理系统</a>
+                        <div class="nav-collapse">
+                            <ul class="nav">
+                                {% if not g.user %}
+                                    <li><a href="{{ url_for('user.get') }}" style="color:#32ff00">登录</a></li>
+                                {% else %}
+                                    <li class="active"><a href="{{ url_for('base.get_all')}}" style="color:#32ff00">基地</a></li>
+                                    <li><a href="{{ url_for('airline.get') }}" style="color:#32ff00">航班</a></li>
+
+                                    {% if session['base'] is defined %}
+                                        <li><a href="{{ url_for('base.get_entities', base= session['base'], entity='task') }}" style="color:#32ff00">任务</a></li>
+                                    {% endif %}
+
+                                    <li> <a href="{{ url_for('user.show', name=session['name']) }}" style="color:#32ff00"> {{ g.user }} </a> </li>
+                                    <li> <a href="{{ url_for('user.logout') }}" style="color:#32ff00">  退出 </a> </li>
+                                {% endif %}
+                            </ul>
+                        </div><!--/.nav-collapse -->
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+<div class="container">
+    {% block content %}
+    {% endblock %}
+</div>
+</body>
+
+{% block footer %}
+    <script src="{{ url_for('static', filename='js/bootstrap-transition.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-alert.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-modal.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-dropdown.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-scrollspy.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-tab.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-tooltip.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-popover.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-button.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-collapse.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-carousel.js') }}" ></script>
+    <script src="{{ url_for('static', filename='js/bootstrap-typeahead.js') }}" ></script>
+{% endblock %}

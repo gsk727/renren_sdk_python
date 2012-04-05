@@ -1,0 +1,10 @@
+DEBUG = True
+HOST = "0.0.0.0"
+#BABEL_LOCALE="zh"
+BABEL_DEFAULT_LOCALE = 'zh'
+BABEL_DEFAULT_TIMEZONE = 'Asia/Shanghai'
+PORT = 5000
+SECRET_KEY = "123"
+
+
+#ACCEPT_LANGUAGES = ['en', 'zh']

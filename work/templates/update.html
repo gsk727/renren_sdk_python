@@ -1,0 +1,9 @@
+{% import 'form.html' as forms with context %}
+<div id='flashed'>
+    <ul>
+        {% for category, msg in get_flashed_messages(with_categories=true) %}
+            <li class='alert alert-{{ category }}'> {{ msg }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<div class='span4'>{{ forms.myForm(updateForm, updateURL) }}</div>
